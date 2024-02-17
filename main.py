@@ -1,6 +1,7 @@
 #from src.cnnClassifier import logger 
 from cnnClassifier import logger # do have to specify folder??? 
 from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 
 # logger.info("Welcome to cnnClassifier")
 
@@ -14,3 +15,18 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e 
+
+
+
+STAGE_NAME = "Prepare base model"
+
+try:
+    logger.info(f"*******************")
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    obj = PrepareBaseModelTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
